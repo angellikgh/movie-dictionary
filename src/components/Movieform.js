@@ -23,6 +23,8 @@ function Movieform({ onAdd }) {
     if (regexp.test(duration)) {
       calcDuration = duration.slice(0, -1);
       calcDuration = Math.round(calcDuration / 60 * 100) / 100;
+    } else {
+      return;
     }
 
     onAdd({

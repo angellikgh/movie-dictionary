@@ -25,18 +25,9 @@ function Movieslist({ keyword, movies }) {
           className='slide-up-fade-in justify-content-between'
           style={{borderBottom: '2px solid var(--primary-color)'}}
         >
-          <div className='layout-column'>
-            {/* use this header for movie name */}
             <h3 className='my-3'>{movie.name}</h3>
-              {/* use this paragraph for movie ratings, for example: 'Ratings: 88/100' */}
-          </div>
-          <div className='layout-column'>
             <p className='my-0 text-right'>Ratings: {movie.ratings}/100</p>
-          </div>
-          <div className='layout-row my-auto mr-20'>
-            {/* use this paragraph for movie duration, for example: '2.5 Hrs' */}
             <p className='justify-content-end'>{movie.duration} Hrs</p>
-          </div>
         </li>))
       : <div data-testid='noResult'>
             <h3 className='text-center'>No Results Found</h3>
