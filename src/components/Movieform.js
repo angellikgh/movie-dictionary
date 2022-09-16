@@ -11,7 +11,7 @@ function Movieform({ onAdd }) {
 
     if (!name || !ratings || !duration) return;
 
-    let regexp = new RegExp(`^([0-9]?)([.]?)([0-9]?[0-9])([hm])$`)
+    let regexp = new RegExp(`^([0-9]?)([.]?)([0-9]?[0-9])([hm])?$`)
 
     if (!regexp.test(duration)) {
       setError(true)
@@ -19,12 +19,9 @@ function Movieform({ onAdd }) {
 
     regexp = new RegExp(`m$`)
 
-    let calcDuration = duration 
+    let calcDuration = duration.slice(0, -1); 
     if (regexp.test(duration)) {
-      calcDuration = duration.slice(0, -1);
       calcDuration = Math.round(calcDuration / 60 * 100) / 100;
-    } else {
-      return;
     }
 
     onAdd({
