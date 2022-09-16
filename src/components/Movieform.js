@@ -19,14 +19,16 @@ function Movieform({ onAdd }) {
 
     regexp = new RegExp(`m$`)
 
+    let calcDuration = duration 
     if (regexp.test(duration)) {
-      duration = Math.round(duration / 60 * 100) / 100;
+      calcDuration = duration.slice(0, -1);
+      calcDuration = Math.round(calcDuration / 60 * 100) / 100;
     }
 
     onAdd({
       name,
       ratings,
-      duration,
+      duration: calcDuration,
     })
   }
 
