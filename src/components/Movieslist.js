@@ -22,11 +22,12 @@ function Movieslist({ keyword, movies }) {
       {movies.length ? movies.map((movie, index) => (
         <li 
         key={`ml+${index}`}
-          className='slide-up-fade-in justify-content-between'
+          className='flex slide-up-fade-in justify-content-between'
           style={{borderBottom: '2px solid var(--primary-color)'}}
         >
           <div>
             <h3 className='my-3'>{movie.name}</h3>
+
             <p className='my-0 text-right'>Ratings: {movie.ratings}/100</p>
           </div>
           <div>
