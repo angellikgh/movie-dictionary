@@ -1,11 +1,44 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-function Movieform() {
+function Movieform({ onAdd }) {
+  const [name, setName] = useState('')
+  const [ratings, setRatings] = useState(0)
+  const [duration, setDuration] = useState('')
+  const [error, setError] = useState(false)
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!name || !ratings) return;
+
+    let regexp = new RegExp(`^([0-9]?)([.]?)([0-9]?[0-9])([hm])$`)
+
+    if (!regexp.test(duration)) {
+      setError(true)
+    }
+
+    regexp = new RegExp(`m$`)
+
+    if (regexp.test(duration)) {
+      duration = Math.round(duration / 60 * 100) / 100;
+    }
+
+    onAdd({
+      name,
+      ratings,
+      duration,
+    })
+  }
+
+  const handleChange = (cb) => (e) => {
+    setError(false)
+    cb(e.target.value)
+  }
 
   return (
     <section>
       <div className='card pa-30'>
-        <form onSubmit={ e => e.preventDefault() }>
+        <form onSubmit={handleSubmit}>
           <div className='layout-column mb-15'>
             <label htmlFor='name' className='mb-3'>Movie Name</label>
             <input 
@@ -13,6 +46,8 @@ function Movieform() {
               id='name'
               placeholder='Enter Movie Name'
               data-testid='nameInput'
+              value={name}
+              onChange={handleChange(setName)}
             />
           </div>
           <div className='layout-column mb-15'>
@@ -20,8 +55,12 @@ function Movieform() {
             <input 
               type='number' 
               id='ratings'
+              min={0}
+              max={100}
               placeholder='Enter Rating on a scale of 1 to 100'
               data-testid='ratingsInput'
+              value={ratings}
+              onChange={handleChange(setRatings)}
             />
           </div>
           <div className='layout-column mb-30'>
@@ -31,15 +70,17 @@ function Movieform() {
               id='duration'
               placeholder='Enter duration in hours or minutes'
               data-testid='durationInput'
+              value={duration}
+              onChange={handleChange(setDuration)}
             />
           </div>
           {/* Use this div when time format is invalid */}
-          {/* <div 
+          {error && <div 
             className='alert error mb-30'
             data-testid='alert'
           >
             Please specify time in hours or minutes (e.g. 2.5h or 150m)
-          </div>  */}
+          </div>}
           <div className='layout-row justify-content-end'>
             <button 
               type='submit'

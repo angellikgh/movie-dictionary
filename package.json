@@ -19,7 +19,7 @@
     "prestart": "npm install",
     "pretest": "npm install",
     "start": "cross-env HOST=0.0.0.0 PORT=8000 ./node_modules/.bin/react-scripts start",
-    "test":"cross-env CI=true ./node_modules/.bin/react-scripts test --verbose --env=jsdom-fourteen --testResultsProcessor ./node_modules/jest-junit"
+    "test": "cross-env CI=true ./node_modules/.bin/react-scripts test --verbose --env=jsdom-fourteen --testResultsProcessor ./node_modules/jest-junit"
   },
   "devDependencies": {
     "chai": "^4.2.0",
