@@ -13,7 +13,7 @@ function App() {
 
   const handleSave = (movie) => {
     let newMovies = [...movies, movie];
-    newMovies = newMovies.sort((a, b) => a.duration > b.duration)
+    newMovies.sort((a, b) => parseFloat(b.duration) - parseInt(a.duration))
     setMovies(newMovies);
   }
 
