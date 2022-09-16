@@ -25,9 +25,13 @@ function Movieslist({ keyword, movies }) {
           className='slide-up-fade-in justify-content-between'
           style={{borderBottom: '2px solid var(--primary-color)'}}
         >
+          <div>
             <h3 className='my-3'>{movie.name}</h3>
             <p className='my-0 text-right'>Ratings: {movie.ratings}/100</p>
+          </div>
+          <div>
             <p className='justify-content-end'>{movie.duration} Hrs</p>
+          </div>
         </li>))
       : <div data-testid='noResult'>
             <h3 className='text-center'>No Results Found</h3>
