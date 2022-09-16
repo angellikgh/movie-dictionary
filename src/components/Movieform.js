@@ -9,7 +9,7 @@ function Movieform({ onAdd }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!name || !ratings) return;
+    if (!name || !ratings || !duration) return;
 
     let regexp = new RegExp(`^([0-9]?)([.]?)([0-9]?[0-9])([hm])$`)
 
