@@ -33,9 +33,9 @@ function Movieslist({ keyword, movies }) {
             <p className='justify-content-end'>{movie.duration} Hrs</p>
           </div>
         </li>))
-      : <div data-testid='noResult'>
+      : <li data-testid='noResult'>
             <h3 className='text-center'>No Results Found</h3>
-          </div>}
+          </li>}
       </ul>
     </section>
   )
